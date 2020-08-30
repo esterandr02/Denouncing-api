@@ -5,20 +5,22 @@ export default class ComplaintController {
         request: Request,
         response: Response
     ): Promise<Response> {
-        const {
-            latitude,
-            longitude,
-            complainer,
-            complaint,
-            description,
-        } = request.body;
+        const { latitude, longitude, whistleblower, complaint } = request.body;
 
         const data = {
+            id: 1,
             latitude,
             longitude,
-            complainer,
+            whistleblower,
             complaint,
-            description,
+            address: {
+                street: 'ary-pitombo',
+                neighborhood: 'trapiche',
+                city: 'maceio',
+                state: 'AL',
+                country: 'Brasil',
+                cep: '57010376',
+            },
         };
 
         return response.json(data);
