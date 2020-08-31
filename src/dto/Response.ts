@@ -1,3 +1,5 @@
+import Address from './Address';
+
 interface Whistleblower {
     name: string;
     cpf: string;
@@ -6,15 +8,6 @@ interface Whistleblower {
 interface Complaint {
     title: string;
     description: string;
-}
-
-interface Address {
-    street: string;
-    neighborhood: string;
-    city: string;
-    state: string;
-    country: string;
-    cep: string;
 }
 
 export default interface Response {
