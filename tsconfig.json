@@ -7,16 +7,16 @@
         "strict": true,
         "strictPropertyInitialization": false,
         "baseUrl": "./src",
+        "paths": {
+            "@controllers/*": ["controllers/*"],
+            "@dto/*": ["dto/*"],
+            "@entities/*": ["entities/*"],
+            "@repositories/*": ["repositories/*"],
+            "@services/*": ["services/*"]
+        },
         "esModuleInterop": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-        "forceConsistentCasingInFileNames": true,
-        "paths": {
-            "@controllers/*": ["controllers/*"],
-            "@entities/*": ["entities/*"],
-            "@repositories/*": ["repositories/*"],
-            "@services/*": ["services/*"],
-            "@dto/*": ["dto/*"]
-        }
+        "forceConsistentCasingInFileNames": true
     }
 }
