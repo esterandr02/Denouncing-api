@@ -4,9 +4,9 @@ import {
     PrimaryGeneratedColumn,
     CreateDateColumn,
     UpdateDateColumn,
+    OneToMany,
+    JoinColumn,
 } from 'typeorm';
-
-//import Complaint from './Complaint';
 
 @Entity('whistleblower')
 export default class Whistleblower {

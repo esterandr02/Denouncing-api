@@ -4,14 +4,23 @@ import {
     PrimaryGeneratedColumn,
     CreateDateColumn,
     UpdateDateColumn,
+    ManyToOne,
+    JoinColumn,
 } from 'typeorm';
 
-//import Whistleblower from './Whistleblower';
+import Whistleblower from './Whistleblower';
 
 @Entity('complaint')
 export default class Complaint {
     @PrimaryGeneratedColumn('uuid')
     id: string;
+
+    @Column()
+    whistleblower_id: string;
+
+    @ManyToOne(() => Whistleblower)
+    @JoinColumn({ name: 'whistleblower_id' })
+    whistleblower: Whistleblower;
 
     @Column()
     title: string;
