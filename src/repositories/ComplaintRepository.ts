@@ -1,6 +1,6 @@
 import { getRepository, Repository } from 'typeorm';
 
-import Complaint from '@models/Complaint';
+import Complaint from '@entities/Complaint';
 
 export default class ComplaintRepository {
     private ormRepository: Repository<Complaint>;
