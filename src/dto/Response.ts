@@ -17,7 +17,7 @@ interface Address {
     cep: string;
 }
 
-export default interface Request {
+export default interface Response {
     id: number;
     latitude: string;
     longitude: string;
