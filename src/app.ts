@@ -1,3 +1,9 @@
+import 'reflect-metadata';
+import 'express-async-errors';
+
+import '@entities/typeorm';
+import './injections';
+
 import express from 'express';
 import routes from './routes';
 
