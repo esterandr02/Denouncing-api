@@ -10,7 +10,7 @@ import {
 
 import Whistleblower from './Whistleblower';
 
-@Entity('complaint')
+@Entity('complaints')
 export default class Complaint {
     @PrimaryGeneratedColumn('uuid')
     id: string;
@@ -18,7 +18,7 @@ export default class Complaint {
     @Column()
     whistleblower_id: string;
 
-    @ManyToOne(() => Whistleblower)
+    @ManyToOne(type => Whistleblower, { eager: true })
     @JoinColumn({ name: 'whistleblower_id' })
     whistleblower: Whistleblower;
 

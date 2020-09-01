@@ -5,13 +5,17 @@ import {
     CreateDateColumn,
     UpdateDateColumn,
     OneToMany,
-    JoinColumn,
 } from 'typeorm';
+
+import Complaint from './Complaint';
 
 @Entity('whistleblower')
 export default class Whistleblower {
     @PrimaryGeneratedColumn('uuid')
     id: string;
+
+    @OneToMany(type => Complaint, whistleblower => Whistleblower)
+    complaints: Complaint[];
 
     @Column()
     name: string;
