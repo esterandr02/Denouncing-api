@@ -1,4 +1,7 @@
 import { Request, Response } from 'express';
+import { container } from 'tsyringe';
+
+import CreateComplaintService from '@services/CreateComplaintService';
 
 export default class ComplaintController {
     public async create(
@@ -7,23 +10,16 @@ export default class ComplaintController {
     ): Promise<Response> {
         const { latitude, longitude, whistleblower, complaint } = request.body;
 
-        const data = {
-            id: 1,
+        const createComplaint = container.resolve(CreateComplaintService);
+
+        const created_complaint = await createComplaint.execute({
             latitude,
             longitude,
             whistleblower,
             complaint,
-            address: {
-                street: 'ary-pitombo',
-                neighborhood: 'trapiche',
-                city: 'maceio',
-                state: 'AL',
-                country: 'Brasil',
-                cep: '57010376',
-            },
-        };
+        });
 
-        return response.json(data);
+        return response.json(created_complaint);
     }
 
     public async list(request: Request, response: Response) {
