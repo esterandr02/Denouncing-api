@@ -6,9 +6,9 @@
     "password": "gostack",
     "database": "denouncing_api",
     "entities": ["src/entities/*.ts"],
-    "migrations": ["src/entities/migrations/*.ts"],
+    "migrations": ["src/entities/typeorm/migrations/*.ts"],
     "cli": {
         "entitiesDir": "src/entities",
-        "migrationsDir": "src/entities/migrations"
+        "migrationsDir": "src/entities/typeorm/migrations"
     }
 }
