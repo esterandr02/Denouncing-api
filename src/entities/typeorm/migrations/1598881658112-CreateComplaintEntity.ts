@@ -1,6 +1,7 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreateComplaintEntity1598881658112 implements MigrationInterface {
+export default class CreateComplaintEntity1598881658112
+    implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
@@ -23,7 +24,7 @@ export class CreateComplaintEntity1598881658112 implements MigrationInterface {
                     },
                     {
                         name: 'whistleblower_id',
-                        type: 'uuid',
+                        type: 'varchar',
                     },
                     {
                         name: 'latitude',
@@ -42,16 +43,6 @@ export class CreateComplaintEntity1598881658112 implements MigrationInterface {
                         name: 'updated_at',
                         type: 'timestamp',
                         default: 'now()',
-                    },
-                ],
-                foreignKeys: [
-                    {
-                        name: 'UserComplaints',
-                        referencedTableName: 'whistleblower',
-                        referencedColumnNames: ['id'],
-                        columnNames: ['whistleblower_id'],
-                        onDelete: 'CASCADE',
-                        onUpdate: 'CASCADE',
                     },
                 ],
             })
