@@ -13,5 +13,4 @@ export default interface Request {
     longitude: string;
     whistleblower: Whistleblower;
     complaint: Complaint;
-    description: string;
 }
