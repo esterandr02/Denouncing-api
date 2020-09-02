@@ -4,8 +4,8 @@ import { container } from 'tsyringe';
 import Complaint from '@entities/Complaint';
 import NewError from '@error/NewError';
 
-import ComplaintRepository from '@repositories/ComplaintRepository';
-import WhistleblowerRepository from '@repositories/WhistleblowerRepository';
+import ComplaintRepositoryDTO from '@dto/repositoriesDTOs/ComplaintRepositoryDTO';
+import WhistleblowerRepositoryDTO from '@dto/repositoriesDTOs/WhistleblowerRepositoryDTO';
 
 import CreateWhistleblowerService from '@services/CreateWhistleblowerService';
 
@@ -16,10 +16,10 @@ import Response from '@dto/Response';
 export default class CreateComplaintService {
     constructor(
         @inject('ComplaintRepository')
-        private complaintRepository: ComplaintRepository,
+        private complaintRepository: ComplaintRepositoryDTO,
 
         @inject('WhistleblowerRepository')
-        private whistleblowerRepository: WhistleblowerRepository
+        private whistleblowerRepository: WhistleblowerRepositoryDTO
     ) {}
 
     public async execute({

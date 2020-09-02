@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
 import Whistleblower from '@entities/Whistleblower';
-import WhistleblowerRepository from '@repositories/WhistleblowerRepository';
+import WhistleblowerRepositoryDTO from '@dto/repositoriesDTOs/WhistleblowerRepositoryDTO';
 
 import WhistleblowerDTO from '@dto/entitiesDTOs/WhistleblowerDTO';
 
@@ -9,7 +9,7 @@ import WhistleblowerDTO from '@dto/entitiesDTOs/WhistleblowerDTO';
 export default class CreateWhistleblowerService {
     constructor(
         @inject('WhistleblowerRepository')
-        private whistleblowerRepository: WhistleblowerRepository
+        private whistleblowerRepository: WhistleblowerRepositoryDTO
     ) {}
 
     public async execute(
