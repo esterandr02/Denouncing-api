@@ -35,4 +35,10 @@ export default class ComplaintRepository implements ComplaintRepositoryDTO {
     public async save(complaint: Complaint): Promise<Complaint> {
         return this.ormRepository.save(complaint);
     }
+
+    public async list(): Promise<Complaint[] | undefined> {
+        const complaints = await this.ormRepository.find();
+
+        return complaints;
+    }
 }

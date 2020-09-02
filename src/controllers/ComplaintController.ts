@@ -8,23 +8,40 @@ export default class ComplaintController {
         request: Request,
         response: Response
     ): Promise<Response> {
-        const { latitude, longitude, whistleblower, complaint } = request.body;
+        try {
+            const {
+                latitude,
+                longitude,
+                whistleblower,
+                complaint,
+            } = request.body;
 
-        const createComplaint = container.resolve(CreateComplaintService);
+            const createComplaint = container.resolve(CreateComplaintService);
 
-        const created_complaint = await createComplaint.execute({
-            title: complaint.title,
-            description: complaint.description,
-            name: whistleblower.name,
-            cpf: whistleblower.cpf,
-            latitude,
-            longitude,
-        });
+            const created_complaint = await createComplaint.execute({
+                title: complaint.title,
+                description: complaint.description,
+                name: whistleblower.name,
+                cpf: whistleblower.cpf,
+                latitude,
+                longitude,
+            });
 
-        return response.json(created_complaint);
+            return response.json(created_complaint);
+        } catch (err) {
+            return response.json({ error: err.message });
+        }
     }
 
-    public async list(request: Request, response: Response) {
-        return response.json('okay');
+    public async list(request: Request, response: Response): Promise<Response> {
+        try {
+            const listComplaints = container.resolve(CreateComplaintService);
+
+            const complaints = await listComplaints.listComplaints();
+
+            return response.json(complaints);
+        } catch (err) {
+            return response.json({ error: err.message });
+        }
     }
 }

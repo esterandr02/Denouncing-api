@@ -1,6 +1,9 @@
 import { inject, injectable } from 'tsyringe';
 import { container } from 'tsyringe';
 
+import Complaint from '@entities/Complaint';
+import NewError from '@error/NewError';
+
 import ComplaintRepository from '@repositories/ComplaintRepository';
 import WhistleblowerRepository from '@repositories/WhistleblowerRepository';
 
@@ -71,5 +74,19 @@ export default class CreateComplaintService {
                 cep: 'bla',
             },
         };
+    }
+
+    public async listComplaints(): Promise<Complaint[]> {
+        const complaints = await this.complaintRepository.list();
+
+        if (!complaints) {
+            throw new NewError('An unexpected error ocurred.', 500);
+        }
+
+        if (!complaints[0]) {
+            throw new NewError('There are no complaints yet.', 200);
+        }
+
+        return complaints;
     }
 }
