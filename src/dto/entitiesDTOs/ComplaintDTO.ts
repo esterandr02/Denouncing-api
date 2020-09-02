@@ -1,5 +1,5 @@
-export default class ComplaintDTO {
-    whistleblower_id: string | undefined;
+export default interface ComplaintDTO {
+    whistleblower_id: string;
     title: string;
     description: string;
     latitude: string;

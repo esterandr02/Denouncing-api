@@ -1,16 +1,8 @@
-interface Whistleblower {
-    name: string;
-    cpf: string;
-}
-
-interface Complaint {
+export default interface Request {
     title: string;
     description: string;
-}
-
-export default interface Request {
+    name: string;
+    cpf: string;
     latitude: string;
     longitude: string;
-    whistleblower: Whistleblower;
-    complaint: Complaint;
 }

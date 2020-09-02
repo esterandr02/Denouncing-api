@@ -11,7 +11,7 @@ interface Complaint {
 }
 
 export default interface Response {
-    id: number;
+    id: string;
     latitude: string;
     longitude: string;
     whistleblower: Whistleblower;
