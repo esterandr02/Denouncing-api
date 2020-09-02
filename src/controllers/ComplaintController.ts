@@ -13,10 +13,12 @@ export default class ComplaintController {
         const createComplaint = container.resolve(CreateComplaintService);
 
         const created_complaint = await createComplaint.execute({
+            title: complaint.title,
+            description: complaint.description,
+            name: whistleblower.name,
+            cpf: whistleblower.cpf,
             latitude,
             longitude,
-            whistleblower,
-            complaint,
         });
 
         return response.json(created_complaint);
