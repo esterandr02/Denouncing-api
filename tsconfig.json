@@ -12,7 +12,8 @@
             "@dto/*": ["dto/*"],
             "@entities/*": ["entities/*"],
             "@repositories/*": ["repositories/*"],
-            "@services/*": ["services/*"]
+            "@services/*": ["services/*"],
+            "@error/*": ["error/*"]
         },
         "esModuleInterop": true,
         "experimentalDecorators": true,

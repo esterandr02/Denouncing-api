@@ -1,3 +1,6 @@
+const { pathsToModuleNameMapper } = require('ts-jest/utils');
+const { compilerOptions } = require('./tsconfig.json');
+
 // For a detailed explanation regarding each configuration property, visit:
 // https://jestjs.io/docs/en/configuration.html
 
@@ -18,7 +21,7 @@ module.exports = {
     collectCoverage: true,
 
     // An array of glob patterns indicating a set of files for which coverage information should be collected
-    collectCoverageFrom: ['<rootDir>/src/services/tests/*.ts'],
+    collectCoverageFrom: ['<rootDir>/src/services/*.ts'],
 
     // The directory where Jest should output its coverage files
     coverageDirectory: 'coverage',
@@ -29,15 +32,10 @@ module.exports = {
     // ],
 
     // Indicates which provider should be used to instrument code for coverage
-    coverageProvider: ['text-summary', 'lcov'],
+    // coverageProvider: 'v8',
 
     // A list of reporter names that Jest uses when writing coverage reports
-    // coverageReporters: [
-    //   "json",
-    //   "text",
-    //   "lcov",
-    //   "clover"
-    // ],
+    coverageReporters: ['text-summary', 'lcov'],
 
     // An object that configures minimum threshold enforcement for coverage results
     // coverageThreshold: undefined,
@@ -93,7 +91,7 @@ module.exports = {
     // notifyMode: "failure-change",
 
     // A preset that is used as a base for Jest's configuration
-    preset: 'ts-test',
+    preset: 'ts-jest',
 
     // Run tests from one or more projects
     // projects: undefined,
