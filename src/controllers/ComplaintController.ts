@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import CreateComplaintService from '@services/CreateComplaintService';
+import CreateWhistleblowerService from '@services/CreateWhistleblowerService';
+import GetAddressService from '@services/GetAddressService';
 
 export default class ComplaintController {
     public async create(
@@ -16,18 +18,30 @@ export default class ComplaintController {
                 complaint,
             } = request.body;
 
+            const checkWhistleblower = container.resolve(
+                CreateWhistleblowerService
+            );
+
+            const getWhistleblower = await checkWhistleblower.execute(
+                whistleblower
+            );
+
             const createComplaint = container.resolve(CreateComplaintService);
 
-            const created_complaint = await createComplaint.execute({
-                title: complaint.title,
-                description: complaint.description,
-                name: whistleblower.name,
-                cpf: whistleblower.cpf,
+            const createdComplaint = await createComplaint.execute({
+                whistleblower: getWhistleblower,
+                complaint,
                 latitude,
                 longitude,
             });
 
-            return response.json(created_complaint);
+            const getAddress = new GetAddressService();
+
+            const address = await getAddress.execute({ latitude, longitude });
+
+            Object.assign(createdComplaint, { address });
+
+            return response.json(createdComplaint);
         } catch (err) {
             return response.json({ error: err.message });
         }
