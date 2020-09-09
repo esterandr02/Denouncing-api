@@ -1,12 +1,17 @@
 import 'reflect-metadata';
 import 'express-async-errors';
-import 'dotenv/config';
+import express from 'express';
+
+import { config } from 'dotenv';
 
 import '@entities/typeorm';
 import './injections';
 
-import express from 'express';
 import routes from './routes';
+
+config({
+    path: process.env.NODE_ENV === 'development' ? '.env' : '.env.example',
+});
 
 const app = express();
 
