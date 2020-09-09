@@ -1,8 +1,11 @@
+import Whistleblower from '@entities/Whistleblower';
+
 export default interface Request {
-    title: string;
-    description: string;
-    name: string;
-    cpf: string;
+    whistleblower: Whistleblower;
+    complaint: {
+        title: string;
+        description: string;
+    };
     latitude: string;
     longitude: string;
 }

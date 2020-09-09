@@ -3,7 +3,7 @@ import { getRepository, Repository } from 'typeorm';
 import Complaint from '@entities/Complaint';
 
 import ComplaintRepositoryDTO from '@dto/repositoriesDTOs/ComplaintRepositoryDTO';
-import ComplaintDTO from '@dto/entitiesDTOs/ComplaintDTO';
+import Request from '@dto/Request';
 
 export default class ComplaintRepository implements ComplaintRepositoryDTO {
     private ormRepository: Repository<Complaint>;
@@ -13,16 +13,15 @@ export default class ComplaintRepository implements ComplaintRepositoryDTO {
     }
 
     public async create({
-        whistleblower_id,
-        title,
-        description,
+        whistleblower,
+        complaint,
         latitude,
         longitude,
-    }: ComplaintDTO): Promise<Complaint> {
+    }: Request): Promise<Complaint> {
         const newComplaint = this.ormRepository.create({
-            whistleblower_id,
-            title,
-            description,
+            whistleblower_id: whistleblower.id,
+            title: complaint.title,
+            description: complaint.description,
             latitude,
             longitude,
         });
@@ -32,13 +31,15 @@ export default class ComplaintRepository implements ComplaintRepositoryDTO {
         return newComplaint;
     }
 
-    public async save(complaint: Complaint): Promise<Complaint> {
-        return this.ormRepository.save(complaint);
-    }
-
     public async list(): Promise<Complaint[] | undefined> {
         const complaints = await this.ormRepository.find();
 
         return complaints;
+    }
+
+    public async findById(id: string): Promise<Complaint | undefined> {
+        const complaint = await this.ormRepository.findOne({ where: { id } });
+
+        return complaint;
     }
 }

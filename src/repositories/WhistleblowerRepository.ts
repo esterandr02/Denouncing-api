@@ -13,18 +13,15 @@ export default class WhistleblowerRepository
         this.ormRepository = getRepository(Whistleblower);
     }
 
-    public async create(
-        whistleblower_data: WhistleblowerDTO
-    ): Promise<Whistleblower> {
-        const whistleblower = this.ormRepository.create(whistleblower_data);
+    public async create({
+        name,
+        cpf,
+    }: WhistleblowerDTO): Promise<Whistleblower> {
+        const whistleblower = this.ormRepository.create({ name, cpf });
 
         await this.ormRepository.save(whistleblower);
 
         return whistleblower;
-    }
-
-    public async save(whistleblower: Whistleblower): Promise<Whistleblower> {
-        return this.ormRepository.save(whistleblower);
     }
 
     public async findByCpf(cpf: string): Promise<Whistleblower | undefined> {
