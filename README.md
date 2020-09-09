@@ -1,5 +1,5 @@
-<p align="right">
-  <img alt="logo" src="src/assets/megafone.jpeg" width="550"/>
+<p align="center">
+  <img alt="logo" src="src/assets/megafone.jpeg"/>
 </p>
 
 <h1 align="center">
@@ -23,7 +23,7 @@
   <a href="#information_source-getting-started">Getting Started</a>&nbsp;&nbsp;&nbsp;
 </p>
 
-## How Works
+## How works
 
 -   Giving complaints coordinates that will find some address where you want to complain
 -   Register complaints whistleblower on database
@@ -33,13 +33,13 @@
 -   [Typescript](https://www.typescriptlang.org/)
 -   [Node.js](https://nodejs.org/en/)
 -   [Docker](https://www.docker.com/)
--   [Eslint]()
--   [Prettier]()
--   [Express]()
--   [Mapquest API]()
--   [Tsyring]()
--   [Postgres]()
--   [jest]()
+-   [Eslint](https://eslint.org/docs/about/)
+-   [Prettier](https://prettier.io/)
+-   [Express](https://expressjs.com/)
+-   [Mapquest API](https://expressjs.com/) - take the free account, get a consumer key and put it on _.env.example_ file 
+-   [Tsyring](https://www.npmjs.com/package/tsyringe)
+-   [Postgres](https://www.postgresql.org/about/)
+-   [jest](https://jestjs.io/)
 
 ## :warning: Prerequisites
 
@@ -48,6 +48,7 @@
 -   [Yarn v1.13](https://yarnpkg.com/getting-started) - package manager
 -   [Docker with postgres database](https://hub.docker.com/_/postgres) - follow the instructions to create a container that will contains the image of postgres.
 -   [Account on Mapquest API](https://reactjs.org/)
+-   Don't forget to put your consumer Mapquest key on _.env.example_ file
 
 ## :information_source: Getting Started
 
