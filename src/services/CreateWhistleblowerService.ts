@@ -12,12 +12,22 @@ export default class CreateWhistleblowerService {
         private whistleblowerRepository: WhistleblowerRepositoryDTO
     ) {}
 
-    public async execute(
-        whistleblower_data: WhistleblowerDTO
-    ): Promise<Whistleblower> {
-        const newWhistleblower = await this.whistleblowerRepository.create(
-            whistleblower_data
+    public async execute({
+        name,
+        cpf,
+    }: WhistleblowerDTO): Promise<Whistleblower> {
+        const whistleblowerExists = await this.whistleblowerRepository.findByCpf(
+            cpf
         );
+
+        if (whistleblowerExists) {
+            return whistleblowerExists;
+        }
+
+        const newWhistleblower = await this.whistleblowerRepository.create({
+            name,
+            cpf,
+        });
 
         return newWhistleblower;
     }
