@@ -1,24 +1,26 @@
+import { uuid } from 'uuidv4';
+
 import Complaint from '@entities/Complaint';
 
 import ComplaintRepositoryDTO from '@dto/repositoriesDTOs/ComplaintRepositoryDTO';
-import ComplaintDTO from '@dto/entitiesDTOs/ComplaintDTO';
+import Request from '@dto/Request';
 
 export default class FakeComplaintRepository implements ComplaintRepositoryDTO {
     private complaints: Complaint[] = [];
 
     public async create({
-        whistleblower_id,
-        title,
-        description,
+        whistleblower,
+        complaint,
         latitude,
         longitude,
-    }: ComplaintDTO): Promise<Complaint> {
-        const complaint = new Complaint();
+    }: Request): Promise<Complaint> {
+        const newComplaint = new Complaint();
 
-        const newComplaint = Object.assign(complaint, {
-            whistleblower_id,
-            title,
-            description,
+        Object.assign(newComplaint, {
+            id: uuid(),
+            whistleblower_id: whistleblower.id,
+            title: complaint.title,
+            description: complaint.description,
             latitude,
             longitude,
         });
@@ -30,5 +32,13 @@ export default class FakeComplaintRepository implements ComplaintRepositoryDTO {
 
     public async list(): Promise<Complaint[] | undefined> {
         return this.complaints;
+    }
+
+    public async findById(id: string): Promise<Complaint | undefined> {
+        const complaint = this.complaints.find(
+            complaint => complaint.id === id
+        );
+
+        return complaint;
     }
 }

@@ -1,3 +1,5 @@
+import { uuid } from 'uuidv4';
+
 import Whistleblower from '@entities/Whistleblower';
 
 import WhistleblowerRepositoryDTO from '@dto/repositoriesDTOs/WhistleblowerRepositoryDTO';
@@ -13,11 +15,11 @@ export default class WhistleblowerRepository
     }: WhistleblowerDTO): Promise<Whistleblower> {
         const whistleblower = new Whistleblower();
 
-        const newWhistleblower = Object.assign(whistleblower, { name, cpf });
+        Object.assign(whistleblower, { id: uuid(), name, cpf });
 
-        this.whistleblowers.push(newWhistleblower);
+        this.whistleblowers.push(whistleblower);
 
-        return newWhistleblower;
+        return whistleblower;
     }
 
     public async findByCpf(cpf: string): Promise<Whistleblower | undefined> {
