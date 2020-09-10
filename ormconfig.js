@@ -3,7 +3,7 @@ module.exports = {
     host: 'localhost',
     port: 5432,
     username: 'postgres',
-    password: 'gostack',
+    password: 'postgres',
     database: 'denouncing_api',
     entities: ['src/entities/*.ts'],
     migrations: ['src/entities/typeorm/migrations/*.ts'],
