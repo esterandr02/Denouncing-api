@@ -66,7 +66,7 @@ $ cd Denouncing-api
 $ yarn
 
 # Create a Docker container
-$ sudo docker run --name gostack-postgres -e POSTGRES_PASSWORD=gostack -p 5432:5432 -d postgres
+$ sudo docker run --name postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
 
 # Start container - (if your machine has been powered off)
 $ docker start (container name/id)
